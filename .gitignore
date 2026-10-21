@@ -1,0 +1,27 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache and build files
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+*.egg-info/
+build/
+dist/
+
+# Jupyter files
+.ipynb_checkpoints/
+
+# Logs
+logs/
+*.log
+
+# Local datasets and generated dataset directories
+data_set/
+data_set.zip
+data_set_clean/
+data_set_split/
+data_set_yolo/
