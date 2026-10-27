@@ -19,9 +19,24 @@ dist/
 logs/
 *.log
 
-# Local datasets and generated dataset directories
+# Local datasets and generated dataset archives
 data_set/
 data_set.zip
+data_set_split.zip
+results.zip
+data/archives/
+
+# Generated datasets
 data_set_clean/
 data_set_split/
 data_set_yolo/
+
+# Generated training artifacts
+models/
+reports/
+runs/
+*.pt
+
+# Local environment and editor files
+.vscode/
+.streamlit/secrets.toml
