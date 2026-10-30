@@ -38,6 +38,30 @@ log.info(f"Copying {SRC} -> {DST}")
 shutil.copytree(SRC, DST)
 log.info("Copy done")
 
+
+# ---- 1b. Deduplicate by content hash ----
+import hashlib
+seen_hashes = {}
+
+def file_hash(p: Path) -> str:
+    return hashlib.md5(p.read_bytes()).hexdigest()
+
+dropped_dupes = 0
+for split in ["Train", "Val"]:
+    for cls in ["Glioma", "Meningioma", "No Tumor", "Pituitary"]:
+        for img in sorted((DST / split / cls / "images").glob("*.jpg")):
+            h = file_hash(img)
+            if h in seen_hashes:
+                lbl = DST / split / cls / "labels" / f"{img.stem}.txt"
+                img.unlink()
+                if lbl.exists(): lbl.unlink()
+                dropped_dupes += 1
+            else:
+                seen_hashes[h] = (split, cls, img.name)
+
+log.info(f"DEDUP: dropped {dropped_dupes} duplicate images")
+log.info(f"DEDUP: unique images kept: {len(seen_hashes)}")
+
 # ============================================================
 # 2. Move/relabel decisions
 # ============================================================
