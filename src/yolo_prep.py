@@ -73,7 +73,7 @@ for sp in SPLITS:
 # ---- data.yaml ----
 yaml_path = DST / "data.yaml"
 yaml_text = (
-    f"path: {DST.resolve()}\n"
+    f"path: .\n"
     f"train: images/train\n"
     f"val: images/val\n"
     f"test: images/test\n\n"
