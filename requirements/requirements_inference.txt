@@ -1,2 +1,6 @@
-tensorflow[and-cuda]>=2.16
-ultralytics>=8.3
+tensorflow>=2.16
+ultralytics>=8.4
+streamlit>=1.30
+pillow>=10.0
+numpy>=1.26
+matplotlib>=3.8
