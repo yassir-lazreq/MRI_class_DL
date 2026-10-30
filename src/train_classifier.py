@@ -145,7 +145,7 @@ def compute_class_weights(train_ds):
 
 # ------------------------------------------------------------------ callbacks
 def get_callbacks(mode):
-    ckpt = MODELS_DIR / f"efficientnet_{mode}.keras"
+    ckpt = MODELS_DIR / f"classifier_{mode}.keras"
     return [
         callbacks.EarlyStopping(
             monitor="val_loss", patience=5,
@@ -278,6 +278,17 @@ def train(mode):
 
     # Final evaluate on test (best weights restored by EarlyStopping)
     evaluate_and_save(model, test_ds, mode, log)
+
+    # Copy finetuned -> best for deployment
+    if mode == "finetuned":
+        import shutil
+        src = MODELS_DIR / "classifier_finetuned.keras"
+        dst = MODELS_DIR / "classifier_best.keras"
+        if src.exists():
+            shutil.copy2(src, dst)
+            log.info(f"[{mode}] copied {src.name} -> {dst.name} (deployment name)")
+
+    log.info(f"[{mode}] done. Model saved at {ckpt}")
     log.info(f"[{mode}] done. Model saved at {ckpt}")
 
 
