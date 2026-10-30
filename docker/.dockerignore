@@ -1,0 +1,14 @@
+.git/
+.venv/
+data_set/
+data_set_clean/
+data_set_split/
+data_set_yolo/
+data/
+runs/
+logs/
+notebooks/
+__pycache__/
+*.pyc
+*.ipynb
+.ipynb_checkpoints/
