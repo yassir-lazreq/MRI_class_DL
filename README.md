@@ -119,6 +119,10 @@ The notebooks document the workflow:
 4. `notebooks/04_classification.ipynb`
 5. `notebooks/05_detection.ipynb`
 
+## Project management
+
+Track project tasks, issues, and progress on the [MRI Jira board](https://yassirlazre.atlassian.net/jira/software/projects/MRI/list?jql=project+%3D+MRI+ORDER+BY+cf%5B10019%5D+ASC&atlOrigin=eyJpIjoiZDVmMDUwMjA4Y2Q2NDM3NGJjNzA1YzkxYzg4YzhkNjEiLCJwIjoiaiJ9).
+
 ## Repository notes
 
 Large datasets, archives, logs, model files, reports, and run outputs are excluded from Git by `.gitignore`. The pretrained YOLOv8 checkpoint is stored at `models/pretrained/yolov8n.pt`.
